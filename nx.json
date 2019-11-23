@@ -13,6 +13,9 @@
     },
     "component-sandbox": {
       "tags": []
+    },
+    "components": {
+      "tags": []
     }
   }
 }

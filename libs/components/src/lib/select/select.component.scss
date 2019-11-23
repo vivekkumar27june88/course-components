@@ -1,0 +1,111 @@
+@import '~@angular/material/theming';
+
+:host {
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  min-width: 3rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.select-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.placeholder {
+  font-size: 0.8rem;
+  padding-right: 0.25rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 0.8rem;
+  padding-right: 0.25rem;
+  color: rgba(0, 0, 0, 0.7);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.drop-down-arrow-icon {
+  max-width: 1rem;
+  user-select: none;
+}
+
+.select-option-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background-color: #f6f8fa;
+}
+
+.search-input {
+  min-height: 36px;
+  border: none;
+  padding: 0.25rem;
+  border: 1px solid #dfe2e5;
+  border-radius: 0.25rem;
+  margin: 0.75rem;
+}
+
+.search-input:focus {
+  border-color: #2188ff;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(27, 31, 35, 0.075),
+    0 0 0 0.2em rgba(3, 102, 214, 0.3);
+}
+
+.option-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+  // border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(100% - 1.5rem);
+  padding: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.option:not(:last-of-type) {
+  border-bottom: 1px solid mat-color(mat-palette($mat-grey), 100);
+}
+
+.checkbox {
+  max-width: 2rem;
+  padding-right: 1rem;
+}
+
+.option-label {
+  color: rgba(0, 0, 0, 0.7);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.action-btn {
+  margin-bottom: auto;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+}
+
+.clear-btn {
+  text-transform: uppercase;
+  background-color: mat-color(mat-palette($mat-amber), 200);
+  font-size: 0.8rem;
+}

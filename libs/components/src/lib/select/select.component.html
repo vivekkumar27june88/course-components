@@ -1,0 +1,55 @@
+<div cdk-overlay-origin
+     class="ct-select-trigger"
+     aria-hidden="true"
+     (click)="toggle()"
+     #origin="cdkOverlayOrigin"
+     #trigger>
+
+  <div class="select-container">
+    <div class="placeholder"
+         *ngIf="placeholder">{{placeholder}}</div>
+    <div class="selected-value"></div>
+    <div class="extra-selected-value count"></div>
+    <mat-icon class="drop-down-arrow-icon">arrow_drop_down</mat-icon>
+  </div>
+
+</div>
+
+<ng-template cdk-connected-overlay
+             cdkConnectedOverlayLockPosition
+             cdkConnectedOverlayHasBackdrop
+             cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+             [cdkConnectedOverlayScrollStrategy]="scrollStrategy"
+             [cdkConnectedOverlayOrigin]="origin"
+             [cdkConnectedOverlayOpen]="panelOpen"
+             [cdkConnectedOverlayPositions]="positions"
+             [cdkConnectedOverlayMinWidth]="triggerRect?.width"
+             [cdkConnectedOverlayWidth]="triggerRect?.width"
+             cdkConnectedOverlayOffsetY="4"
+             cdkConnectedOverlayOffsetX="-10"
+             (backdropClick)="close()"
+             (attach)="onAttached()"
+             (detach)="close()">
+
+  <div class="select-option-container"
+       #panel
+       [ngClass]="panelClass">
+    <input type="search"
+           class="search-input"
+           placeholder="Search">
+
+    <div class="option-list">
+      <div *ngFor="let option of options"
+           class="option">
+        <mat-checkbox class="checkbox"
+                      (change)="checkboxChangeEventHandler($event, option)"
+                      [checked]="hasOptionSelected(option)"></mat-checkbox>
+        <div class="option-label">{{option.label}}</div>
+      </div>
+    </div>
+    <div class="action-btn">
+      <button mat-flat-button
+              class="clear-btn">CLEAR</button>
+    </div>
+  </div>
+</ng-template>

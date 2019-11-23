@@ -25,7 +25,10 @@
               "apps/component-sandbox/src/favicon.ico",
               "apps/component-sandbox/src/assets"
             ],
-            "styles": ["apps/component-sandbox/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/component-sandbox/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -84,7 +87,10 @@
               "apps/component-sandbox/tsconfig.app.json",
               "apps/component-sandbox/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/component-sandbox/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/component-sandbox/**"
+            ]
           }
         },
         "test": {
@@ -118,9 +124,48 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/component-sandbox-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/component-sandbox-e2e/**"]
+            "tsConfig": [
+              "apps/component-sandbox-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/component-sandbox-e2e/**"
+            ]
           }
+        }
+      }
+    },
+    "components": {
+      "projectType": "library",
+      "root": "libs/components",
+      "sourceRoot": "libs/components/src",
+      "prefix": "course-components",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/tsconfig.lib.json",
+              "libs/components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/components/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/components/jest.config.js",
+            "tsConfig": "libs/components/tsconfig.spec.json",
+            "setupFile": "libs/components/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }
